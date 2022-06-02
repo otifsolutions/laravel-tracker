@@ -1,0 +1,37 @@
+{
+  "name": "otifsolutions/laravel-tracker",
+  "description": "Package will track users activity like page vitists, their currency, languages, check most hit page etc",
+  "keywords": ["laravel", "tracker", "page-hits", "user-activity", "browser", "platform", "server", "website", "database", "track-activity"],
+  "homepage": "https://github.com/otifsolutions/laravel-tracker",
+  "license" : "MIT",
+  "authors": [
+    {
+      "name": "OTIF Solutions",
+      "homepage": "contact@otif-solutions.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.*",
+    "otifsolutions/laravel-settings": "^1",
+    "torann/geoip": "^3.0.*"
+  }
+  ,
+  "require-dev": {
+    "roave/security-advisories": "dev-latest"
+  },
+  "autoload": {
+    "psr-4": {
+      "OTIFSolutions\\LaravelTracker\\": "src/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "OTIFSolutions\\LaravelTracker\\LaravelTrackerServiceProvider"
+      ]
+    }
+  },
+  "suggest": {
+    "illuminate/support": "Required for laravel service providers"
+  }
+}
