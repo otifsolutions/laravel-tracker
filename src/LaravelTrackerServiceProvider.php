@@ -2,8 +2,8 @@
 
 namespace OTIFSolutions\LaravelTracker;
 
-use App\Http\Kernel;
 use Illuminate\Console\Scheduling\Schedule;
+use Illuminate\Foundation\Http\Kernel;
 use Illuminate\Support\ServiceProvider;
 use OTIFSolutions\LaravelTracker\Commands\RemoveOldData;
 use OTIFSolutions\LaravelTracker\Http\Middleware\TrackActivities;
