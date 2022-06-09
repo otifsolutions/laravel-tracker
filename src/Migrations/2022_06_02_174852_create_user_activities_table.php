@@ -8,9 +8,7 @@ return new class extends Migration {
 
     public function up() {
         Schema::create('guest_user_activities', function (Blueprint $table) {
-            $table->bigIncrements('id');
-
-            //
+            $table->id();
 
             $table->timestamps();
         });

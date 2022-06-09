@@ -7,16 +7,16 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration {
 
     public function up() {
-        Schema::create('registered_user_activities', function (Blueprint $table) {
-            $table->bigIncrements('id');
+        Schema::create('guest_users', function (Blueprint $table) {
+            $table->id();
 
-            //
+            // define table structure
 
             $table->timestamps();
         });
     }
 
     public function down() {
-        Schema::dropIfExists('registered_user_activities');
+        Schema::dropIfExists('guest_users');
     }
 };

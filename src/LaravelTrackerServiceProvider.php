@@ -12,6 +12,6 @@ class LaravelTrackerServiceProvider extends ServiceProvider {
     }
 
     public function booted(Closure $callback) {
-        $this->loadMigrationsFrom(__DIR__ );
+        $this->loadMigrationsFrom(__DIR__ . '/Database/migrations');
     }
 }
