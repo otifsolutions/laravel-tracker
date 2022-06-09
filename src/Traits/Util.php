@@ -1,6 +1,6 @@
 <?php
 
-namespace OTIFSolutions\Traits;
+namespace OTIFSolutions\LaravelTracker\Traits;
 
 trait Util {
 
@@ -11,8 +11,6 @@ trait Util {
     private function seperateEndPointWithRequestMethods() {
 
     }
-
-
 
     private function getUserIpAddress() {
         $ipaddress = '';
