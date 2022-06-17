@@ -4,6 +4,13 @@ namespace OTIFSolutions\LaravelTracker\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class User extends Model {
+class UserDetail extends Model {
+
+    protected $guarded = [];
+
+    public function userActivities() {
+        return $this->hasMany(UserActivity::class);
+    }
+
 
 }
