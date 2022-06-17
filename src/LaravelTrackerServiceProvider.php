@@ -2,6 +2,7 @@
 
 namespace OTIFSolutions\LaravelTracker;
 
+use Closure;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Http\Kernel;
 use Illuminate\Support\ServiceProvider;
@@ -9,6 +10,11 @@ use OTIFSolutions\LaravelTracker\Commands\RemoveOldData;
 use OTIFSolutions\LaravelTracker\Http\Middleware\TrackActivities;
 
 class LaravelTrackerServiceProvider extends ServiceProvider {
+
+    public function booted(Closure $callback) {
+        $schedule = $this->app->make(Schedule::class);
+        $schedule->command('remove:old')->daily()->at('08:00');
+    }
 
     public function boot(Kernel $kernel) {
 
