@@ -6,14 +6,14 @@ use Closure;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Http\Kernel;
 use Illuminate\Support\ServiceProvider;
-use OTIFSolutions\LaravelTracker\Commands\RemoveOldData;
+use OTIFSolutions\LaravelTracker\Commands\DeleteRecordsBeforeCertainDays;
 use OTIFSolutions\LaravelTracker\Http\Middleware\TrackActivities;
 
 class LaravelTrackerServiceProvider extends ServiceProvider {
 
     public function booted(Closure $callback) {
         $schedule = $this->app->make(Schedule::class);
-        $schedule->command('remove:old')->daily()->at('08:00');
+        $schedule->command('clear:records')->daily()->at('08:00');
     }
 
     public function boot(Kernel $kernel) {
@@ -23,7 +23,7 @@ class LaravelTrackerServiceProvider extends ServiceProvider {
 
         if ($this->app->runningInConsole()) {
             $this->commands([
-                RemoveOldData::class
+                DeleteRecordsBeforeCertainDays::class
             ]);
         }
 
