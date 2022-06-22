@@ -2,29 +2,30 @@
 
 namespace OTIFSolutions\LaravelTracker\Http\Middleware;
 
+use OTIFSolutions\LaravelTracker\Models\OtifUser;
+use OTIFSolutions\LaravelTracker\Models\OtifUserActivity;
 use Closure;
 use Illuminate\Http\Request;
-use JsonException;
-use OTIFSolutions\LaravelTracker\Models\UserActivity;
+use Illuminate\Support\Facades\Auth;
 
 class TrackActivities {
 
-    /**
-     * Handle an incoming request.
-     *
-     * @param Request $request
-     * @param Closure $next
-     * @return mixed
-     * @throws JsonException
-     */
-    public function handle($request, Closure $next) {
+    public function handle(Request $request, Closure $next) {
 
-        // logic goes here
+        if (!OtifUser::where('ip_address', $request->getClientIp())->exists()) {
+            OtifUser::create([
+                'name' => Auth::user()->name ?? null,
+                'email' => Auth::user()->email ?? null,
+                'session_id' => $request->session()->getId(),
+                'ip_address' => $request->getClientIp(),
+                'http_host' => $request->server->get('HTTP_HOST'),
+                'browser' => $request->header('User-Agent')
+            ]);
+        }
 
-        // track every single activity
-        UserActivity::create([
-            'client_ip_address' => $request->getClientIp(),
-            'http_host' => $request->server->get('HTTP_HOST'),
+        OtifUserActivity::create([
+            'user_id' => OtifUser::where('ip_address', $request->getClientIp())->first()['id'],
+            'session_id' => $request->session()->getId(),
             'full_url' => $request->fullUrl(),
             'redirect_url' => $request->server->get('REDIRECT_URL'),
             'request_method' => $request->server->get('REQUEST_METHOD'),
@@ -34,7 +35,8 @@ class TrackActivities {
         ]);
 
         return $next($request);
-
     }
+
+    // register your own facade methods and use them into your code plz
 
 }
