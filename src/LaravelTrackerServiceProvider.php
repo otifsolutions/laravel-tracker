@@ -30,10 +30,7 @@ class LaravelTrackerServiceProvider extends ServiceProvider {
     }
 
     public function register() {
-        $this->app->booted(function () {
-            $schedule = $this->app->make(Schedule::class);
-            $schedule->command('remove:old')->daily()->at('08:00');
-        });
+
     }
 
 }
