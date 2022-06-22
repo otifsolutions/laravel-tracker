@@ -4,12 +4,12 @@ namespace OTIFSolutions\LaravelTracker\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class UserActivity extends Model {
+class OtifUser extends Model {
 
     protected $guarded = [];
 
-    public function userDetail() {
-        return $this->belongsTo(UserDetail::class);
+    public function otifUserActivities() {
+        return $this->hasMany(OtifUserActivity::class);
     }
 
 }
