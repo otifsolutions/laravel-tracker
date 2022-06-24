@@ -7,11 +7,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use OTIFSolutions\LaravelTracker\Models\OtifUser;
 use OTIFSolutions\LaravelTracker\Models\OtifUserActivity;
-use OTIFSolutions\LaravelTracker\Traits\Utlities;
+use OTIFSolutions\LaravelTracker\Traits\Utilities;
 
 class TrackActivities {
 
-    use Utlities;
+    use Utilities;
 
     public function handle(Request $request, Closure $next) {
 
