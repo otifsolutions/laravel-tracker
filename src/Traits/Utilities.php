@@ -4,31 +4,27 @@ namespace OTIFSolutions\LaravelTracker\Traits;
 
 use OTIFSolutions\Laravel\Settings\Models\Setting;
 
-trait Utlities {
+trait Utilities {
 
-    private bool $trackCookies;
-    private bool $trackHttpRequests;
+    private $trackCookies;
+    private $trackHttpRequests;
     private $trackerStatus;
-    private bool $trackMiscData;
+    private $trackMiscData;
 
     public function __construct() {
-
-        $this->trackCookies = false;
+        $this->trackCookies = Setting::get('trackCookies') ?: false;
         $this->trackerStatus = Setting::get('trackerStatus') ?: true;
-        $this->trackMiscData = false;
-        $this->trackHttpRequests = false;
-
+        $this->trackMiscData = Setting::get('trackMiscData') ?: true;
+        $this->trackHttpRequests = Setting::get('trackHttpRequests') ?: true;
     }
-
 
     public function getTrackerStatus() {
         return $this->trackerStatus;
     }
 
-
-
     public function getUserIpAddress() {
         $ipaddress = '';
+
         if (isset($_SERVER['HTTP_CLIENT_IP']))
             $ipaddress = $_SERVER['HTTP_CLIENT_IP'];
         else if (isset($_SERVER['HTTP_X_FORWARDED_FOR']))
@@ -44,6 +40,18 @@ trait Utlities {
         else
             $ipaddress = 'UNKNOWN';
         return $ipaddress;
+    }
+
+    public function getTrackCookies() {
+        return $this->trackCookies;
+    }
+
+    public function getTrackHttpRequests() {
+        return $this->trackHttpRequests;
+    }
+
+    public function getTrackMiscData() {
+        return $this->trackMiscData;
     }
 
 }
