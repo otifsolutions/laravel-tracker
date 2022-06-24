@@ -14,7 +14,6 @@ return new class extends Migration {
             $table->string('page_hits_per_day');
             $table->string('who_visted_the_page_most');
             $table->string('area_where_the_page_visited_most');
-            $table->string('');
             $table->timestamps();
         });
     }
