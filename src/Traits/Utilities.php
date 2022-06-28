@@ -2,6 +2,8 @@
 
 namespace OTIFSolutions\LaravelTracker\Traits;
 
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 use OTIFSolutions\Laravel\Settings\Models\Setting;
 
 trait Utilities {
@@ -20,6 +22,14 @@ trait Utilities {
 
     public function getTrackerStatus() {
         return $this->trackerStatus;
+    }
+
+    public function encodeRequest(Request $request) {
+        $newArray = [];
+        foreach ($request->all() as $key => $value) {
+            $newArray[$key] = Crypt::encryptString($value);
+        }
+        return $newArray;
     }
 
     public function getUserIpAddress() {
