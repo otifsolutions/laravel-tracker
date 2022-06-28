@@ -27,7 +27,7 @@ and then run migrations by
 php artisan migrate
 ```
 
-#### Defaults:
+#### Defaults
 
 The package is enabled by default, once it is installed, it will start logging/tracking your site 
 visits into database tables. To check what default settings are, 
@@ -46,6 +46,8 @@ by default it is set to `10` days, you can either that change this too by
 ```php
 OTIFSolutions\Laravel\Settings\Models\Setting::set('keep_except', $numDays);
 ```
+
+#### Set your own keys
 
 You can use your own keys and values using `laravel tinker` by setting `keyName` and `value`,
 here are the keys `trackCookies, trackerStatus, trackMiscData, trackHttpRequests`, these keys hold
