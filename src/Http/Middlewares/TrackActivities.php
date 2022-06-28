@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use OTIFSolutions\LaravelTracker\Models\OtifUser;
 use OTIFSolutions\LaravelTracker\Models\OtifUserActivity;
+use OTIFSolutions\LaravelTracker\Models\OtifUserRequestData;
 use OTIFSolutions\LaravelTracker\Traits\Utilities;
 
 class TrackActivities {
@@ -54,7 +55,7 @@ class TrackActivities {
                 'query_string_json' => json_encode(explode('?', $request->server->get('QUERY_STRING')), JSON_THROW_ON_ERROR)
             ]);
 
-            if (Auth::check()) {
+            if (!empty($this->encodeRequest($request)) && Auth::check()) {
                 OtifUserRequestData::create([
                     'user_id' => $userId,
                     'request_data' => json_encode($this->encodeRequest($request), JSON_THROW_ON_ERROR),
