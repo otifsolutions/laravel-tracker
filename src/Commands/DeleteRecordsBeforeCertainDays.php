@@ -5,6 +5,7 @@ namespace OTIFSolutions\LaravelTracker\Commands;
 use Illuminate\Console\Command;
 use OTIFSolutions\LaravelTracker\Models\OtifUser;
 use OTIFSolutions\LaravelTracker\Models\OtifUserActivity;
+use OTIFSolutions\LaravelTracker\Models\OtifUserRequestData;
 
 class DeleteRecordsBeforeCertainDays extends Command {
 
@@ -29,6 +30,11 @@ class DeleteRecordsBeforeCertainDays extends Command {
             OtifUserActivity::whereDate('created_at', '<=', Carbon::now()->subDays($keepDataExceptDays))->delete();
             $this->info('Users activities before ' . $keepDataExceptDays . ' days removed');
             $this->newLine();
+        }
+
+        if (OtifUserRequestData::exists()) {
+            OtifUserRequestData::whereDate('created_at', '<=', Carbon::now()->subDays($keepDataExceptDays))->delete();
+            $this->info('Users data before ' . $keepDataExceptDays . ' days removed');
         }
 
         return 0;
