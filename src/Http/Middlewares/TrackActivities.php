@@ -55,12 +55,15 @@ class TrackActivities {
                 'query_string_json' => json_encode(explode('?', $request->server->get('QUERY_STRING')), JSON_THROW_ON_ERROR)
             ]);
 
-            if (!empty($this->encodeRequest($request)) && Auth::check()) {
-                OtifUserRequestData::create([
-                    'user_id' => $userId,
-                    'request_data' => json_encode($this->encodeRequest($request), JSON_THROW_ON_ERROR),
-                    'request_method' => $request->server->get('REQUEST_METHOD')
-                ]);
+            if ($this->trackHttpRequests()) {
+                $encodedRequest = $this->encodeRequest($request);
+                if (!empty($encodedRequest) && Auth::check()) {
+                    OtifUserRequestData::create([
+                        'user_id' => $userId,
+                        'request_data' => json_encode($encodedRequest, JSON_THROW_ON_ERROR),
+                        'request_method' => $request->server->get('REQUEST_METHOD')
+                    ]);
+                }
             }
         }
 
