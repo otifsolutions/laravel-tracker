@@ -1,6 +1,6 @@
 ## Laravel-tracker
 
-This Package that tracks users activity and generates the complete log in database tables
+The Package will track users activity and generate the complete log in database tables
 
 ### Requirements
 `php >= 7.4`
