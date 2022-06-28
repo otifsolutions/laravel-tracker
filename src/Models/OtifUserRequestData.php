@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace OTIFSolutions\LaravelTracker\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Crypt;
