@@ -29,7 +29,7 @@ php artisan migrate
 
 #### Defaults:
 
-The package is enabled by default, once it is installed, it will start logginc/tracking your site 
+The package is enabled by default, once it is installed, it will start logging/tracking your site 
 visits into database tables. To check what default settings are, 
 see `OTIFSolutions\LaravelTracker\Traits\Utilities` class constructor
 
