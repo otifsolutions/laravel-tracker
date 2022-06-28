@@ -40,20 +40,19 @@ $this->trackMiscData = Setting::get('trackMiscData') ?: true;
 $this->trackHttpRequests = Setting::get('trackHttpRequests') ?: true;
 ```
 
-Package made database table hold records of certain days, and removes the rest of the data, by default it is set to `10` days, you can either that change this too by
+Package made database table hold records of certain days, and removes the rest of the data, 
+by default it is set to `10` days, you can either that change this too by
 
 ```php
 OTIFSolutions\Laravel\Settings\Models\Setting::set('keep_except', $numDays);
 ```
 
-You can use your own keys and values using `laravel tinker` by setting `keyName` and `value`
-```php
-OTIFSolutions\Laravel\Settings\Models\Setting::set('yourKey', $value, 'valueType');
-```
+You can use your own keys and values using `laravel tinker` by setting `keyName` and `value`,
+here are the keys `trackCookies, trackerStatus, trackMiscData, trackHttpRequests`, these keys hold
+`boolean` values only, so remember to add third parameter as 'bool'
 
-if the value is `bool`, don't forget to add third parameter to this `set` method by
 ```php
-OTIFSolutions\Laravel\Settings\Models\Setting::set('yourKey', $value, 'bool');
+OTIFSolutions\Laravel\Settings\Models\Setting::set('yourKey', $trueFalse, 'bool');
 ```
 
 #### Licence
