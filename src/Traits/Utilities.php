@@ -16,8 +16,8 @@ trait Utilities {
     public function __construct() {
         $this->trackCookies = Setting::get('trackCookies') ?: false;
         $this->trackerStatus = Setting::get('trackerStatus') ?: true;
-        $this->trackMiscData = Setting::get('trackMiscData') ?: true;
-        $this->trackHttpRequests = Setting::get('trackHttpRequests') ?: true;
+        $this->trackMiscData = Setting::get('trackMiscData') ?: false;
+        $this->trackHttpRequests = Setting::get('trackHttpRequests') ?: false;
     }
 
     public function getTrackerStatus() {
@@ -56,7 +56,7 @@ trait Utilities {
         return $this->trackCookies;
     }
 
-    public function getTrackHttpRequests() {
+    public function trackHttpRequests() {
         return $this->trackHttpRequests;
     }
 
