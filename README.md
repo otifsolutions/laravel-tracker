@@ -29,7 +29,9 @@ php artisan migrate
 
 #### Defaults:
 
-The package is enabled by default, once it is installed, it will start logginc/tracking your site visits into database tables. To check what default settings are , see `OTIFSolutions\LaravelTracker\Traits\Utilities` class constructor
+The package is enabled by default, once it is installed, it will start logginc/tracking your site 
+visits into database tables. To check what default settings are, 
+see `OTIFSolutions\LaravelTracker\Traits\Utilities` class constructor
 
 ```php
 $this->trackCookies = Setting::get('trackCookies') ?: false;
@@ -44,13 +46,12 @@ Package made database table hold records of certain days, and removes the rest o
 OTIFSolutions\Laravel\Settings\Models\Setting::set('keep_except', $numDays);
 ```
 
-
-You can your own keys and values using `laravel tinker` by setting `keyName` and `value`
+You can use your own keys and values using `laravel tinker` by setting `keyName` and `value`
 ```php
-OTIFSolutions\Laravel\Settings\Models\Setting::set('yourKey', $value);
+OTIFSolutions\Laravel\Settings\Models\Setting::set('yourKey', $value, 'valueType');
 ```
 
-if the value is `bool`, don't forget to add third parameter to this method by
+if the value is `bool`, don't forget to add third parameter to this `set` method by
 ```php
 OTIFSolutions\Laravel\Settings\Models\Setting::set('yourKey', $value, 'bool');
 ```
