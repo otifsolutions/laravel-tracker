@@ -12,4 +12,8 @@ class OtifUser extends Model {
         return $this->hasMany(OtifUserActivity::class);
     }
 
+    public function otifUserRequestData() {
+        return $this->hasMany(OtifUserRequestData::class);
+    }
+
 }
