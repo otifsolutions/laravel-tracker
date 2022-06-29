@@ -29,6 +29,7 @@
       "OTIFSolutions\\LaravelTracker\\": "src/"
     }
   },
+  "minimum-stability": "dev",
   "extra": {
     "laravel": {
       "providers": [
