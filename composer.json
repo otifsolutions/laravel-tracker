@@ -1,5 +1,6 @@
 {
   "name": "otifsolutions/laravel-tracker",
+  "type": "library",
   "description": "Package will track users activity like page vitists, their currency, languages, check most hit page etc",
   "keywords": [
     "laravel",
