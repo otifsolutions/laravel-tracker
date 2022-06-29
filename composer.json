@@ -21,10 +21,6 @@
       "homepage": "contact@otif-solutions.com"
     }
   ],
-  "require": {
-    "php": ">=7.4",
-    "otifsolutions/laravel-settings": "^1"
-  },
   "autoload": {
     "psr-4": {
       "OTIFSolutions\\LaravelTracker\\": "src/"
@@ -37,5 +33,12 @@
         "OTIFSolutions\\LaravelTracker\\LaravelTrackerServiceProvider"
       ]
     }
+  },
+  "require": {
+    "php": ">=7.4",
+    "ext-curl": "*",
+    "ext-json": "*",
+    "ext-dom": "*",
+    "otifsolutions/laravel-settings": "^1"
   }
 }
