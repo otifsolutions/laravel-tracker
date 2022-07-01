@@ -41,7 +41,7 @@ $this->trackHttpRequests = Setting::get('trackHttpRequests') ?: true;
 ```
 
 Package made database table hold records of certain days, and removes the rest of the data, 
-by default it is set to `10` days, you can either that change this too by
+by default it is set to `10` days, you can either change this too by
 
 ```php
 OTIFSolutions\Laravel\Settings\Models\Setting::set('keep_except', $numDays);
