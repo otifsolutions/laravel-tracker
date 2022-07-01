@@ -36,19 +36,6 @@ class TrackActivities {
             ]);
 
 
-
-            // if same guest is authed, new session is generated
-            if (Auth::check()) {
-                OtifUser::updateOrCreate(['name' => Auth::user()->name, 'email' => Auth::user()->email], [
-                    'name' => Auth::user()->name,
-                    'email' => Auth::user()->email,
-                    'session_id' => $request->session()->getId(),
-                    'ip_address' => $request->getClientIp(),
-                    'http_host' => $request->server->get('HTTP_HOST'),
-                    'browser' => $request->header('User-Agent')
-                ]);
-            }
-
             $userId = OtifUser::where('ip_address', $request->getClientIp())->latest()->first()->id;
 
             OtifUserActivity::create([
