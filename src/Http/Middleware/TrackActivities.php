@@ -18,19 +18,24 @@ class TrackActivities {
 
         if ($this->getTrackerStatus()) {
 
-            if (!OtifUser::where('ip_address', $request->getClientIp())->exists()) {
+            $authId = @Auth::user()->id;
 
-                if (!Auth::check()) {
-                    OtifUser::create([
-                        'name' => null,
-                        'email' => null,
-                        'session_id' => $request->session()->getId(),
-                        'ip_address' => $request->getClientIp(),
-                        'http_host' => $request->server->get('HTTP_HOST'),
-                        'browser' => $request->header('User-Agent')
-                    ]);
-                }
-            }
+            NovaSession::updateOrCreate(['session_id' => $request->session()->getId()], [
+                'auth_id' => $authId,
+                'session_id' => $request->session()->getId(),
+                'ip_address' => $request->getClientIp(),
+                'http_host' => $request->server->get('HTTP_HOST'),
+                'http_accept' => $request->server->get('HTTP_ACCEPT'),
+                'http_accept_encoding' => $request->server->get('HTTP_ACCEPT_ENCODING'),
+                'server_name' => $request->server->get('SERVER_NAME'),
+                'server_addr' => $request->server->get('SERVER_ADDR'),
+                'remote_addr' => $request->server->get('REMOTE_ADDR'),
+                'server_admin' => $request->server->get('SERVER_ADMIN'),
+                'server_signature' => $request->server->get('SERVER_SIGNATURE'),
+                'browser' => $request->header('User-Agent')
+            ]);
+
+
 
             // if same guest is authed, new session is generated
             if (Auth::check()) {
