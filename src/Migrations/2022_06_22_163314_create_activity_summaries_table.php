@@ -7,21 +7,18 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration {
 
     public function up() {
-        Schema::create('otif_user_request_data', static function (Blueprint $table) {
+        Schema::create('activity_summaries', static function (Blueprint $table) {
             $table->engine = 'myIsam';
             $table->id();
-
-            $table->foreignId('user_id')
-                ->references('id')
-                ->on('otif_users');
-
-            $table->json('request_data');
-            $table->string('request_method');
+            $table->string('most_visited_page');
+            $table->string('page_hits_per_day');
+            $table->string('who_visted_the_page_most');
+            $table->string('area_where_the_page_visited_most');
             $table->timestamps();
         });
     }
 
     public function down() {
-        Schema::dropIfExists('otif_user_request_data');
+        Schema::dropIfExists('activity_summaries');
     }
 };
