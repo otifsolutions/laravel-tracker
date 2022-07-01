@@ -24,24 +24,24 @@ class DeleteRecordsBeforeCertainDays extends Command {
         $keepDataExceptDays = Setting::get('keep_except') ?? Setting::set('keep_except', 10);
 
         if (NovaSession::exists()) {
-            OtifUser::whereDate('created_at', '<=', Carbon::now()->subDays($keepDataExceptDays))->delete();
+            NovaSession::whereDate('created_at', '<=', Carbon::now()->subDays($keepDataExceptDays))->delete();
             // $this->info('Users data before ' . $keepDataExceptDays . ' days removed');
             // $this->newLine();
         }
 
         if (UserActivity::exists()) {
-            OtifUserActivity::whereDate('created_at', '<=', Carbon::now()->subDays($keepDataExceptDays))->delete();
+            UserActivity::whereDate('created_at', '<=', Carbon::now()->subDays($keepDataExceptDays))->delete();
             // $this->info('Users activities before ' . $keepDataExceptDays . ' days removed');
             // $this->newLine();
         }
 
         if (RequestData::exists()) {
-            OtifUserRequestData::whereDate('created_at', '<=', Carbon::now()->subDays($keepDataExceptDays))->delete();
+            RequestData::whereDate('created_at', '<=', Carbon::now()->subDays($keepDataExceptDays))->delete();
             // $this->info('Users data before ' . $keepDataExceptDays . ' days removed');
         }
 
         if (ActivitySummary::exists()) {
-            OtifUserRequestData::whereDate('created_at', '<=', Carbon::now()->subDays($keepDataExceptDays))->delete();
+            ActivitySummary::whereDate('created_at', '<=', Carbon::now()->subDays($keepDataExceptDays))->delete();
             // $this->info('Users data before ' . $keepDataExceptDays . ' days removed');
         }
 
