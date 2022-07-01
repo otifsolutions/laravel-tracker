@@ -2,7 +2,9 @@
 
 namespace OTIFSolutions\LaravelTracker\Commands;
 
+use Carbon\Carbon;
 use Illuminate\Console\Command;
+use OTIFSolutions\Laravel\Settings\Models\Setting;
 use OTIFSolutions\LaravelTracker\Models\OtifUser;
 use OTIFSolutions\LaravelTracker\Models\OtifUserActivity;
 use OTIFSolutions\LaravelTracker\Models\OtifUserRequestData;
