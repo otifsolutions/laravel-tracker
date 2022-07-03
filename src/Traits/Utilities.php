@@ -20,11 +20,11 @@ trait Utilities {
         $this->trackHttpRequests = Setting::get('trackHttpRequests') ?: false;
     }
 
-    public function getTrackerStatus() {
+    protected function getTrackerStatus() {
         return $this->trackerStatus;
     }
 
-    public function encodeRequest(Request $request) {
+    protected function encodeRequest(Request $request) {
         $newArray = [];
         foreach ($request->all() as $key => $value) {
             $newArray[$key] = Crypt::encryptString($value);
@@ -32,7 +32,7 @@ trait Utilities {
         return $newArray;
     }
 
-    public function getUserIpAddress() {
+    protected function getUserIpAddress() {
         $ipaddress = '';
 
         if (isset($_SERVER['HTTP_CLIENT_IP']))
@@ -52,15 +52,15 @@ trait Utilities {
         return $ipaddress;
     }
 
-    public function getTrackCookies() {
+    protected function getTrackCookies() {
         return $this->trackCookies;
     }
 
-    public function trackHttpRequests() {
+    protected function trackHttpRequests() {
         return $this->trackHttpRequests;
     }
 
-    public function getTrackMiscData() {
+    protected function getTrackMiscData() {
         return $this->trackMiscData;
     }
 
