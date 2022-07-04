@@ -31,7 +31,7 @@ php artisan migrate
 
 The package is enabled by default, once it is installed, it will start logging/tracking your site 
 visits into database tables. To check what default settings are, 
-see [**OTIFSolutions\LaravelTracker\Traits\Utilities**](https://github.com/otifsolutions/laravel-tracker/blob/main/src/Traits/Utilities.php) class constructor
+see [**OTIFSolutions\LaravelTracker\Traits\UtilityMethods**](https://github.com/otifsolutions/laravel-tracker/blob/main/src/Traits/UtilityMethods.php) class constructor
 
 ```php
 $this->trackerStatus = Setting::get('trackerStatus') ?: true;
