@@ -18,7 +18,7 @@ The Package will track users activity and generate the complete log in database 
 Now put the middleware in your `App\Http\Kernel` global HTTP middlware stack
  
 ```php
-\OTIFSolutions\LaravelTracker\Http\Middleware\TrackActivities::class;
+\OTIFSolutions\LaravelTracker\Http\Middleware\TrackActivities::class,
 ```
 
 and then run migrations by 
