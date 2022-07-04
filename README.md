@@ -15,10 +15,11 @@ The Package will track users activity and generate the complete log in database 
  composer require otifsolutions/laravel-tracker
 ```
 
-Now put the middleware in your `App\Http\Kernel` global HTTP middlware stack
+Now put the middleware at the end of `App\Http\Kernel` global HTTP middlware stack
  
 ```php
-\OTIFSolutions\LaravelTracker\Http\Middleware\TrackActivities::class,
+\Illuminate\Session\Middleware\StartSession::class,     // got from web
+\OTIFSolutions\LaravelTracker\Http\Middleware\TrackActivities::class
 ```
 
 and then run migrations by 
