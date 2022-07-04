@@ -1,7 +1,7 @@
 {
   "name": "otifsolutions/laravel-tracker",
   "type": "library",
-  "description": "Package will track users activity like page vitists, their currency, languages, check most hit page etc",
+  "description": "The Package will track users activity and generate the complete log in database tables",
   "keywords": [
     "laravel",
     "tracker",
