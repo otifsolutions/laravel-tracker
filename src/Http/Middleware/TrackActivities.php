@@ -20,7 +20,7 @@ class TrackActivities {
 
             $authId = @Auth::user()->id;
 
-            NovaSession::updateOrCreate(['session_id' => $request->session()->getId()], [
+            $novaObj = NovaSession::updateOrCreate(['session_id' => $request->session()->getId()], [
                 'auth_id' => $authId,
                 'session_id' => $request->session()->getId(),
                 'ip_address' => $request->getClientIp(),
@@ -35,33 +35,44 @@ class TrackActivities {
                 'browser' => $request->header('User-Agent')
             ]);
 
-
-            $userId = OtifUser::where('ip_address', $request->getClientIp())->latest()->first()->id;
-
-            OtifUserActivity::create([
-                'user_id' => $userId,
+            UserActivity::create([
+                'nova_session_id' => $novaObj->id,
                 'full_url' => $request->fullUrl(),
                 'redirect_url' => $request->server->get('REDIRECT_URL'),
                 'request_method' => $request->server->get('REQUEST_METHOD'),
                 'redirect_status' => $request->server->get('REDIRECT_STATUS'),
-                'query_string_json' => json_encode(explode('?', $request->server->get('QUERY_STRING')), JSON_THROW_ON_ERROR)
+                'query_string_json' => json_encode(
+                    explode(
+                        '?',
+                        $request->server->get('QUERY_STRING')
+                    ),
+                    JSON_THROW_ON_ERROR
+                )
             ]);
 
             if ($this->trackHttpRequests()) {
-                $encodedRequest = $this->encodeRequest($request);
-                if (!empty($encodedRequest) && Auth::check()) {
-                    OtifUserRequestData::create([
-                        'user_id' => $userId,
-                        'request_data' => json_encode($encodedRequest, JSON_THROW_ON_ERROR),
+
+                $encryptRequest = $this->encryptArray($request->all());
+
+                if (!empty($encryptRequest)) {
+                    RequestData::create([
+                        'nova_session_id' => $novaObj->id,
+                        'request_data' => json_encode($encryptRequest, JSON_THROW_ON_ERROR),
                         'request_method' => $request->server->get('REQUEST_METHOD')
                     ]);
                 }
+            }
+
+            if ($this->trackCookies() && empty(array_diff($_COOKIE, MyCookie::latest()->first()->cookies_data))) {
+                $encryptedCookies = $this->encryptArray($_COOKIE);
+                MyCookie::create([
+                    'nova_session_id' => $novaObj->id,
+                    'cookies_data' => json_encode($encryptedCookies, JSON_THROW_ON_ERROR)
+                ]);
             }
         }
 
         return $next($request);
     }
-
-    // register your own facade methods and use them into your code plz
 
 }
