@@ -57,5 +57,11 @@ here are the keys `trackCookies`, `trackerStatus`, `trackMiscData`, `trackHttpRe
 OTIFSolutions\Laravel\Settings\Models\Setting::set('yourKey', $trueFalse, 'bool');
 ```
 
+### Relationship defined between Models
+**NovaSession** is the parent mode. It has *one-to-many* relation with **UserActivity**, 
+*one-to-many* relation with **RequestData** and *one-to-many* relation with **MyCookie**. 
+**ActivitySummary** does not have any relation with any model.
+
+
 ### Licence
 The MIT License (MIT). Please see [**License file**](https://github.com/otifsolutions/laravel-tracker/blob/main/LICENSE) for more information
