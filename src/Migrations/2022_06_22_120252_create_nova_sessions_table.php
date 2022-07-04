@@ -11,7 +11,7 @@ return new class extends Migration {
             $table->engine = 'myIsam';
             $table->id();
             $table->unsignedInteger('auth_id')->nullable();
-            $table->string('session_id');   // the actual session id, it is actually a random string
+            $table->string('session_id');   // the actual session id, it is a random string
             $table->string('ip_address');
             $table->string('http_host');
             $table->string('http_accept');
@@ -22,9 +22,6 @@ return new class extends Migration {
             $table->string('server_admin');
             $table->string('server_signature');
             $table->string('browser')->nullable();
-
-            // todo : add few more colomns here to make the user/nova sessions more readable, PARENT TABLE
-
             $table->timestamps();
         });
     }
