@@ -18,7 +18,7 @@ class LaravelTrackerServiceProvider extends ServiceProvider {
 
     public function boot(Kernel $kernel) {
 
-        $this->loadMigrationsFrom(__DIR__ . '/Database/migrations');
+        $this->loadMigrationsFrom(__DIR__ . '/Migrations/');
         $kernel->pushMiddleware(TrackActivities::class);
 
         if ($this->app->runningInConsole()) {
