@@ -25,19 +25,19 @@ class DeleteRecordsBeforeCertainDays extends Command {
 
         if (UserActivity::exists()) {
             UserActivity::whereDate('created_at', '<=', Carbon::now()->subDays($keepDataExceptDays))->delete();
-            $this->info('Users activities before ' . $keepDataExceptDays . ' days removed');
+            $this->info('Users activities data before ' . $keepDataExceptDays . ' days removed');
             $this->newLine();
         }
 
         if (RequestData::exists()) {
             RequestData::whereDate('created_at', '<=', Carbon::now()->subDays($keepDataExceptDays))->delete();
-            $this->info('Users data before ' . $keepDataExceptDays . ' days removed');
+            $this->info('Users request data before ' . $keepDataExceptDays . ' days removed');
             $this->newLine();
         }
 
         if (ActivitySummary::exists()) {
             ActivitySummary::whereDate('created_at', '<=', Carbon::now()->subDays($keepDataExceptDays))->delete();
-            $this->info('Users data before ' . $keepDataExceptDays . ' days removed');
+            $this->info('Users stats/summary data before ' . $keepDataExceptDays . ' days removed');
             $this->newLine();
         }
 
