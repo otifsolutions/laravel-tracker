@@ -19,24 +19,26 @@ class DeleteRecordsBeforeCertainDays extends Command {
 
         if (NovaSession::exists()) {
             NovaSession::whereDate('created_at', '<=', Carbon::now()->subDays($keepDataExceptDays))->delete();
-            // $this->info('Users data before ' . $keepDataExceptDays . ' days removed');
-            // $this->newLine();
+            $this->info('Users data before ' . $keepDataExceptDays . ' days removed');
+            $this->newLine();
         }
 
         if (UserActivity::exists()) {
             UserActivity::whereDate('created_at', '<=', Carbon::now()->subDays($keepDataExceptDays))->delete();
-            // $this->info('Users activities before ' . $keepDataExceptDays . ' days removed');
-            // $this->newLine();
+            $this->info('Users activities before ' . $keepDataExceptDays . ' days removed');
+            $this->newLine();
         }
 
         if (RequestData::exists()) {
             RequestData::whereDate('created_at', '<=', Carbon::now()->subDays($keepDataExceptDays))->delete();
-            // $this->info('Users data before ' . $keepDataExceptDays . ' days removed');
+            $this->info('Users data before ' . $keepDataExceptDays . ' days removed');
+            $this->newLine();
         }
 
         if (ActivitySummary::exists()) {
             ActivitySummary::whereDate('created_at', '<=', Carbon::now()->subDays($keepDataExceptDays))->delete();
-            // $this->info('Users data before ' . $keepDataExceptDays . ' days removed');
+            $this->info('Users data before ' . $keepDataExceptDays . ' days removed');
+            $this->newLine();
         }
 
         return 0;
