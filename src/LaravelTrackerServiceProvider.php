@@ -29,8 +29,4 @@ class LaravelTrackerServiceProvider extends ServiceProvider {
 
     }
 
-    public function register() {
-
-    }
-
 }
