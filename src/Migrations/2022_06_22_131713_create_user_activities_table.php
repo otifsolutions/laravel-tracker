@@ -8,14 +8,13 @@ return new class extends Migration {
 
     public function up() {
         Schema::create('user_activities', static function (Blueprint $table) {
-            $table->engine = 'myIsam';
+            $table->engine = 'myIsam';  // for the insertion and performacne, we are using this engine
             $table->id();
 
             $table->foreignId('nova_session_id')
                 ->references('id')
                 ->on('nova_sessions');
 
-//            $table->string('session_id');
             $table->string('full_url'); // https::example.com/user=34?age=12
             $table->string('redirect_url')->nullable(); // /show
             $table->string('request_method');   // get

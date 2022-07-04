@@ -11,8 +11,8 @@ return new class extends Migration {
             $table->engine = 'myIsam';
             $table->id();
 
-            $table->foreignId('nova_sessions_id')    // child table colomn name
-                ->references('id')
+            $table->foreignId('nova_session_id')    // child table colomn name
+            ->references('id')
                 ->on('nova_sessions');    // parent table name
 
             $table->json('cookies_data');
