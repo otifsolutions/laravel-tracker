@@ -18,7 +18,7 @@ The Package will track users activity and generate the complete log in database 
 Now put the middleware at the end of `App\Http\Kernel` global HTTP middlware stack
  
 ```php
-\Illuminate\Session\Middleware\StartSession::class,     // got from web
+\Illuminate\Session\Middleware\StartSession::class,   
 \OTIFSolutions\LaravelTracker\Http\Middleware\TrackActivities::class
 ```
 
