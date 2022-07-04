@@ -49,8 +49,8 @@ OTIFSolutions\Laravel\Settings\Models\Setting::set('keep_except', $numDays);
 
 ### Set your own keys
 
-You can use your own keys and values using `laravel tinker` by setting `keyName` and `value`,
-here are the keys `trackCookies, trackerStatus, trackMiscData, trackHttpRequests`, these keys hold
+You can use your keys and values using `laravel tinker` by setting `keyName` and `value`,
+here are the keys `trackCookies`, `trackerStatus`, `trackMiscData`, `trackHttpRequests`, these keys hold
 `boolean` values only, so remember to add third parameter as 'bool'
 
 ```php
