@@ -34,9 +34,9 @@ visits into database tables. To check what default settings are,
 see [**OTIFSolutions\LaravelTracker\Traits\Utilities**](https://github.com/otifsolutions/laravel-tracker/blob/main/src/Traits/Utilities.php) class constructor
 
 ```php
-$this->trackCookies = Setting::get('trackCookies') ?: false;
 $this->trackerStatus = Setting::get('trackerStatus') ?: true;
-$this->trackMiscData = Setting::get('trackMiscData') ?: true;
+$this->trackCookies = Setting::get('trackCookies') ?: false;
+$this->trackMiscData = Setting::get('trackMiscData') ?: false;
 $this->trackHttpRequests = Setting::get('trackHttpRequests') ?: true;
 ```
 
