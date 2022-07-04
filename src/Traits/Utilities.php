@@ -2,7 +2,6 @@
 
 namespace OTIFSolutions\LaravelTracker\Traits;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
 use OTIFSolutions\Laravel\Settings\Models\Setting;
 
@@ -14,25 +13,42 @@ trait Utilities {
     private $trackMiscData;
 
     public function __construct() {
-        $this->trackCookies = Setting::get('trackCookies') ?: false;
+
         $this->trackerStatus = Setting::get('trackerStatus') ?: true;
+        $this->trackCookies = Setting::get('trackCookies') ?: true;
         $this->trackMiscData = Setting::get('trackMiscData') ?: false;
-        $this->trackHttpRequests = Setting::get('trackHttpRequests') ?: false;
+        $this->trackHttpRequests = Setting::get('trackHttpRequests') ?: true;
     }
 
-    protected function getTrackerStatus() {
+    public function getTrackerStatus(): bool {
         return $this->trackerStatus;
     }
 
-    protected function encodeRequest(Request $request) {
+    public function encryptArray(array $array): array {
         $newArray = [];
-        foreach ($request->all() as $key => $value) {
+        foreach ($array as $key => $value) {
             $newArray[$key] = Crypt::encryptString($value);
         }
         return $newArray;
     }
 
-    protected function getUserIpAddress() {
+    protected function encryptAssociatveArray(array $array): array {
+        $demoArray = [];
+        foreach ($array as $key => $value) {
+            $demoArray[$key] = Crypt::encryptString($value);
+        }
+        return $demoArray;
+    }
+
+    protected function decryptAssociativeArray(array $array): array {
+        $demoArray = [];
+        foreach ($array as $key => $value) {
+            $demoArray[$key] = Crypt::decryptString($value);
+        }
+        return $demoArray;
+    }
+
+    public function getUserIpAddress() {
         $ipaddress = '';
 
         if (isset($_SERVER['HTTP_CLIENT_IP']))
@@ -52,15 +68,15 @@ trait Utilities {
         return $ipaddress;
     }
 
-    protected function getTrackCookies() {
+    public function trackCookies() {
         return $this->trackCookies;
     }
 
-    protected function trackHttpRequests() {
+    public function trackHttpRequests() {
         return $this->trackHttpRequests;
     }
 
-    protected function getTrackMiscData() {
+    public function trackMiscData() {
         return $this->trackMiscData;
     }
 
