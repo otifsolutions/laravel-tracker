@@ -5,7 +5,7 @@ namespace OTIFSolutions\LaravelTracker\Traits;
 use Illuminate\Support\Facades\Crypt;
 use OTIFSolutions\Laravel\Settings\Models\Setting;
 
-trait Utilities {
+trait UtilityMethods {
 
     private $trackCookies;
     private $trackHttpRequests;
