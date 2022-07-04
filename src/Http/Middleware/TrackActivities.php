@@ -5,9 +5,8 @@ namespace OTIFSolutions\LaravelTracker\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use OTIFSolutions\LaravelTracker\Models\OtifUser;
-use OTIFSolutions\LaravelTracker\Models\OtifUserActivity;
-use OTIFSolutions\LaravelTracker\Models\OtifUserRequestData;
+
+use OTIFSolutions\LaravelTracker\Models\{NovaSession, RequestData, UserActivity};
 use OTIFSolutions\LaravelTracker\Traits\Utilities;
 
 class TrackActivities {
