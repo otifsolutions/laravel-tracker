@@ -9,7 +9,8 @@ class RequestData extends Model {
 
     protected $guarded = [];
 
-    public function getRequestDataAttribute($value) {
+    // accessor for the "request_data"
+    protected function getRequestDataAttribute($value) {
         $newArray = [];
         foreach (json_decode($value) as $key => $item) {
             $newArray[$key] = Crypt::decryptString($item);
