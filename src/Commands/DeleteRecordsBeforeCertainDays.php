@@ -5,22 +5,16 @@ namespace OTIFSolutions\LaravelTracker\Commands;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
 use OTIFSolutions\Laravel\Settings\Models\Setting;
-use OTIFSolutions\LaravelTracker\Models\ActivitySummary;
-use OTIFSolutions\LaravelTracker\Models\NovaSession;
-use OTIFSolutions\LaravelTracker\Models\RequestData;
-use OTIFSolutions\LaravelTracker\Models\UserActivity;
+use OTIFSolutions\LaravelTracker\Models\{NovaSession, RequestData, UserActivity, ActivitySummary};
 
 class DeleteRecordsBeforeCertainDays extends Command {
 
     protected $hidden = true;
-
     protected $signature = 'clear:records';
-
     protected $description = 'Will keep the records of certain days, and removes the rest';
 
     public function handle() {
 
-        // if user has given this key from anywhere else, this will be overritten
         $keepDataExceptDays = Setting::get('keep_except') ?? Setting::set('keep_except', 10);
 
         if (NovaSession::exists()) {
