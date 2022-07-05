@@ -22,6 +22,17 @@ Now put the middleware at the end of `App\Http\Kernel` global HTTP middlware sta
 \OTIFSolutions\LaravelTracker\Http\Middleware\TrackActivities::class
 ```
 
+
+### Or
+If you want your certain group of routes to be tracked, apply the middleware to the route group like 
+```php
+use OTIFSolutions\LaravelTracker\Http\Middleware\TrackActivities;
+
+Route::middleware([TrackActivities::class])->group(static function () {
+    // your routes
+});
+```
+
 and then run migrations by 
 
 ```
