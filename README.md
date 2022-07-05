@@ -24,7 +24,7 @@ Now put the middleware at the end of `App\Http\Kernel` global HTTP middlware sta
 
 
 ### Or
-If you want your certain group of routes to be tracked, apply the middleware to the route group like 
+If you want your certain group of routes to be tracked, apply the middleware to the route group in **web.php** like 
 ```php
 use OTIFSolutions\LaravelTracker\Http\Middleware\TrackActivities;
 
