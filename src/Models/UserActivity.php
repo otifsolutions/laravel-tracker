@@ -9,7 +9,7 @@ class UserActivity extends Model {
     protected $guarded = [];
 
     public function novaSession() {
-        return $this->belongsTo(NovaSession::class, 'nova_session_id');
+        return $this->belongsTo(UserSession::class, 'user_session_id');
     }
 
 }

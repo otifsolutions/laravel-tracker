@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-use OTIFSolutions\LaravelTracker\Models\{NovaSession, RequestData, UserActivity};
+use OTIFSolutions\LaravelTracker\Models\{UserSession, RequestData, UserActivity};
 use OTIFSolutions\LaravelTracker\Traits\UtilityMethods;
 
 class TrackActivities {
@@ -19,7 +19,7 @@ class TrackActivities {
 
             $authId = @Auth::user()->id;
 
-            $novaObj = NovaSession::updateOrCreate(['session_id' => $request->session()->getId()], [
+            $userSessionObj = UserSession::updateOrCreate(['session_id' => $request->session()->getId()], [
                 'auth_id' => $authId,
                 'session_id' => $request->session()->getId(),
                 'ip_address' => $request->getClientIp(),
@@ -35,7 +35,7 @@ class TrackActivities {
             ]);
 
             UserActivity::create([
-                'nova_session_id' => $novaObj->id,
+                'user_session_id' => $userSessionObj->id,
                 'full_url' => $request->fullUrl(),
                 'redirect_url' => $request->server->get('REDIRECT_URL'),
                 'request_method' => $request->server->get('REQUEST_METHOD'),
@@ -55,7 +55,7 @@ class TrackActivities {
 
                 if (!empty($encryptRequest)) {
                     RequestData::create([
-                        'nova_session_id' => $novaObj->id,
+                        'user_session_id' => $userSessionObj->id,
                         'request_data' => json_encode($encryptRequest, JSON_THROW_ON_ERROR),
                         'request_method' => $request->server->get('REQUEST_METHOD')
                     ]);
@@ -65,7 +65,7 @@ class TrackActivities {
             if ($this->trackCookies() && empty(array_diff($_COOKIE, MyCookie::latest()->first()->cookies_data))) {
                 $encryptedCookies = $this->encryptArray($_COOKIE);
                 MyCookie::create([
-                    'nova_session_id' => $novaObj->id,
+                    'user_session_id' => $userSessionObj->id,
                     'cookies_data' => json_encode($encryptedCookies, JSON_THROW_ON_ERROR)
                 ]);
             }

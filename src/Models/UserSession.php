@@ -4,7 +4,7 @@ namespace OTIFSolutions\LaravelTracker\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class NovaSession extends Model {
+class UserSession extends Model {
 
     protected $guarded = [];
 
@@ -13,11 +13,11 @@ class NovaSession extends Model {
     }
 
     public function requestData() {
-        return $this->hasMany(RequestData::class, 'nova_session_id', 'id');
+        return $this->hasMany(RequestData::class, 'user_session_id', 'id');
     }
 
     public function cookiesData() {
-        return $this->hasMany(MyCookie::class, 'nova_session_id', 'id');
+        return $this->hasMany(MyCookie::class, 'user_session_id', 'id');
     }
 
 }

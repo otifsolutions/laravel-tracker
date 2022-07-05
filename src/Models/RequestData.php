@@ -19,7 +19,7 @@ class RequestData extends Model {
     }
 
     public function novaSession() {
-        return $this->belongsTo(NovaSession::class);
+        return $this->belongsTo(UserSession::class);
     }
 
 }

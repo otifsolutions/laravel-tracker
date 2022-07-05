@@ -5,7 +5,7 @@ namespace OTIFSolutions\LaravelTracker\Commands;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
 use OTIFSolutions\Laravel\Settings\Models\Setting;
-use OTIFSolutions\LaravelTracker\Models\{NovaSession, RequestData, UserActivity, ActivitySummary};
+use OTIFSolutions\LaravelTracker\Models\{UserSession, RequestData, UserActivity, ActivitySummary};
 
 class DeleteRecordsBeforeCertainDays extends Command {
 
@@ -17,8 +17,8 @@ class DeleteRecordsBeforeCertainDays extends Command {
 
         $keepDataExceptDays = Setting::get('keep_except') ?? Setting::set('keep_except', 10);
 
-        if (NovaSession::exists()) {
-            NovaSession::whereDate('created_at', '<=', Carbon::now()->subDays($keepDataExceptDays))->delete();
+        if (UserSession::exists()) {
+            UserSession::whereDate('created_at', '<=', Carbon::now()->subDays($keepDataExceptDays))->delete();
             $this->info('Users data before ' . $keepDataExceptDays . ' days removed');
             $this->newLine();
         }

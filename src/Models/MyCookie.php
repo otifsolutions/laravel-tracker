@@ -19,7 +19,7 @@ class MyCookie extends Model {
     }
 
     public function cookies() {
-        return $this->belongsTo(NovaSession::class);
+        return $this->belongsTo(UserSession::class);
     }
 
 }

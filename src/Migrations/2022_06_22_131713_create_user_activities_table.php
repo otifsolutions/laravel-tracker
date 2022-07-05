@@ -11,9 +11,9 @@ return new class extends Migration {
             $table->engine = 'myIsam';  // for the insertion and performacne, we are using this engine
             $table->id();
 
-            $table->foreignId('nova_session_id')
+            $table->foreignId('user_session_id')
                 ->references('id')
-                ->on('nova_sessions');
+                ->on('user_sessions');
 
             $table->string('full_url'); // https::example.com/user=34?age=12
             $table->string('redirect_url')->nullable(); // /show
