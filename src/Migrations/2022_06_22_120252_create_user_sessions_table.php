@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration {
 
     public function up() {
-        Schema::create('nova_sessions', static function (Blueprint $table) {
+        Schema::create('user_sessions', static function (Blueprint $table) {
             $table->engine = 'myIsam';
             $table->id();
             $table->unsignedInteger('auth_id')->nullable();
