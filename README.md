@@ -29,7 +29,7 @@ If you want your certain group of routes to be tracked, apply the middleware to 
 use OTIFSolutions\LaravelTracker\Http\Middleware\TrackActivities;
 
 Route::middleware([TrackActivities::class])->group(static function () {
-    // your routes
+    // your routes being tracked
 });
 ```
 
