@@ -15,8 +15,6 @@ class TrackActivities {
 
     public function handle(Request $request, Closure $next) {
 
-        chmod(storage_path('logs/laravel.log'),0777);
-
         if ($this->getTrackerStatus()) {
 
             $authId = @Auth::user()->id;
