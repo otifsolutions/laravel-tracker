@@ -35,12 +35,6 @@ class DeleteRecordsBeforeCertainDays extends Command {
             $this->newLine();
         }
 
-        if (ActivitySummary::exists()) {
-            ActivitySummary::whereDate('created_at', '<=', Carbon::now()->subDays($keepDataExceptDays))->delete();
-            $this->info('Users stats/summary data before ' . $keepDataExceptDays . ' days removed');
-            $this->newLine();
-        }
-
         return 0;
     }
 
