@@ -74,7 +74,7 @@ OTIFSolutions\Laravel\Settings\Models\Setting::set('yourKey', $trueFalse, 'bool'
 ### Relationships defined between Models
 **NovaSession** is the parent model. It has *one-to-many* relation with **UserActivity**, 
 *one-to-many* relation with **RequestData** and *one-to-many* relation with **MyCookie**. 
-**ActivitySummary** does not have any relation with any model.
+
 
 
 ### Licence
