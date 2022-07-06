@@ -15,7 +15,7 @@ The Package will track users activity and generate the complete log in database 
  composer require otifsolutions/laravel-tracker
 ```
 
-Now put the middleware at the end of `App\Http\Kernel` global HTTP middlware stack
+Now put these middlewares at the end of `App\Http\Kernel` global HTTP middlware stack *(order or middlewares is important)*
  
 ```php
 \Illuminate\Session\Middleware\StartSession::class,   
@@ -29,7 +29,7 @@ If you want your certain group of routes to be tracked, apply the middleware to 
 use OTIFSolutions\LaravelTracker\Http\Middleware\TrackActivities;
 
 Route::middleware([TrackActivities::class])->group(static function () {
-    // your routes being tracked
+    // your routes to be tracked
 });
 ```
 
