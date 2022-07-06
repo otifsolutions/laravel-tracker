@@ -50,9 +50,7 @@ class TrackActivities {
             ]);
 
             if ($this->trackHttpRequests()) {
-
                 $encryptRequest = $this->encryptArray($request->all());
-
                 if (!empty($encryptRequest)) {
                     RequestData::create([
                         'user_session_id' => $userSessionObj->id,
@@ -62,12 +60,13 @@ class TrackActivities {
                 }
             }
 
-            if ($this->trackCookies() && empty(array_diff($_COOKIE, MyCookie::latest()->first()->cookies_data))) {
+            if ($this->trackCookies()) {
                 $encryptedCookies = $this->encryptArray($_COOKIE);
                 MyCookie::create([
                     'user_session_id' => $userSessionObj->id,
                     'cookies_data' => json_encode($encryptedCookies, JSON_THROW_ON_ERROR)
                 ]);
+
             }
         }
 
