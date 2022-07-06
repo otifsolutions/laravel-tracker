@@ -52,6 +52,8 @@ $this->trackMiscData = Setting::get('trackMiscData') ?: false;
 $this->trackHttpRequests = Setting::get('trackHttpRequests') ?: true;
 ```
 
+**Remember** ( If key `trackerStatus` is `false`, no other key will work and won't track anything )
+
 Package made database table hold records of certain days, and removes the rest of the data, 
 by default it is set to `10` days, you can either change this too by
 
