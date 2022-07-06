@@ -18,7 +18,7 @@ class RequestData extends Model {
         return $newArray;
     }
 
-    public function novaSession() {
+    public function userSession() {
         return $this->belongsTo(UserSession::class);
     }
 
