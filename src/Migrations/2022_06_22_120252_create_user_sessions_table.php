@@ -15,7 +15,6 @@ return new class extends Migration {
             $table->string('ip_address');
             $table->string('http_host');
             $table->string('http_accept');
-            $table->string('http_accept_encoding');
             $table->string('server_name');
             $table->string('server_addr');
             $table->string('remote_addr');
