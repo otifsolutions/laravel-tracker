@@ -25,7 +25,6 @@ class TrackActivities {
                 'ip_address' => $request->getClientIp(),
                 'http_host' => $request->server->get('HTTP_HOST'),
                 'http_accept' => $request->server->get('HTTP_ACCEPT'),
-                'http_accept_encoding' => $request->server->get('HTTP_ACCEPT_ENCODING'),
                 'server_name' => $request->server->get('SERVER_NAME'),
                 'server_addr' => $request->server->get('SERVER_ADDR'),
                 'remote_addr' => $request->server->get('REMOTE_ADDR'),
