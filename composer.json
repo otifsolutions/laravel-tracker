@@ -2,14 +2,6 @@
   "name": "otifsolutions/laravel-tracker",
   "type": "library",
   "description": "The Package will track users activity and generate the complete log in database tables",
-  "keywords": [
-    "laravel",
-    "tracker",
-    "server",
-    "website",
-    "database"
-  ],
-  "homepage": "https://github.com/otifsolutions/laravel-tracker",
   "license": "MIT",
   "authors": [
     {
