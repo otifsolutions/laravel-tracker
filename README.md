@@ -71,6 +71,24 @@ here are the keys `trackCookies`, `trackerStatus`, `trackMiscData`, `trackHttpRe
 OTIFSolutions\Laravel\Settings\Models\Setting::set('yourKey', $trueFalse, 'bool');
 ```
 
+### Note 
+In **Linux** environments, sometimes, when you install a package, it wants some permissions for package to work, like
+*laravel.long* and *storeage* etc residing in laravel project. You have to grant it 
+permissions by running this command inside your laravel proejct , *for debian based linux distros like Ubuntu*
+
+**for all files in project**
+```ssh
+sudo chmod -R 0777 *
+```
+
+**for certain single file**
+```ssh
+sudo chmod -R 0777 file
+```
+
+where *file* is *absolute path* to the file
+
+
 ### Relationships defined between Models
 **NovaSession** is the parent model. It has *one-to-many* relation with **UserActivity**, 
 *one-to-many* relation with **RequestData**, *one-to-many* relation with **MyCookie**
