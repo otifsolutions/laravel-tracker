@@ -52,7 +52,7 @@ $this->trackMiscData = Setting::get('trackMiscData') ?: false;
 $this->trackHttpRequests = Setting::get('trackHttpRequests') ?: true;
 ```
 
-**Remember** ( If key `trackerStatus` is `false`, no other key will work and won't track anything )
+**Remember** ( If key `trackerStatus` is `false` then no other key will work and won't track anything )
 
 Package made database table hold records of certain days, and removes the rest of the data, 
 by default it is set to `10` days, you can either change this too by
@@ -63,7 +63,7 @@ OTIFSolutions\Laravel\Settings\Models\Setting::set('keep_except', $numDays);
 
 ### Set your own keys
 
-You can use your keys and values using `laravel tinker` **`php artisan tinker`** by setting `keyName` and `value`,
+You can use your keys and values using `laravel tinker` **`(php artisan tinker)`** by setting `keyName` and `value`,
 here are the keys `trackCookies`, `trackerStatus`, `trackMiscData`, `trackHttpRequests`, these keys hold
 `boolean` values only, so remember to add third parameter as *'bool'*
 
