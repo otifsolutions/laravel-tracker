@@ -5,13 +5,9 @@
   "keywords": [
     "laravel",
     "tracker",
-    "page-hits",
-    "user-activity",
-    "user log",
     "server",
     "website",
-    "database",
-    "track-activity"
+    "database"
   ],
   "homepage": "https://github.com/otifsolutions/laravel-tracker",
   "license": "MIT",
