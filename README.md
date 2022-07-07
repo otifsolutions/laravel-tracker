@@ -55,7 +55,7 @@ $this->trackHttpRequests = Setting::get('trackHttpRequests') ?: true;
 **Remember** ( If key `trackerStatus` is `false` then no other key will work and won't track anything )
 
 Package made database table hold records of certain days, and removes the rest of the data, 
-by default it is set to `10` days, you can either change this too by
+by default it is set to `20` days, you can either change this too by
 
 ```php
 OTIFSolutions\Laravel\Settings\Models\Setting::set('keep_except', $numDays);
@@ -69,6 +69,16 @@ here are the keys `trackCookies`, `trackerStatus`, `trackMiscData`, `trackHttpRe
 
 ```php
 OTIFSolutions\Laravel\Settings\Models\Setting::set('yourKey', $trueFalse, 'bool');
+```
+
+### Clearing old data
+Data is generated on every page hit by user, at the end we have bulk of data, 
+we have command to remove that data data, which is sheduled to be executed after 30 days
+at `08::00 AM` and time will be started when package will be installed, though we can run 
+this command manually anytime to remove the data (before set days, default is 20)
+
+```
+php artisan clear:records
 ```
 
 ### Note 
