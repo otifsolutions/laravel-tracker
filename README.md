@@ -15,7 +15,7 @@ The Package will track users activity and generate the complete log in database 
  composer require otifsolutions/laravel-tracker
 ```
 
-Now put these middlewares at the end of `App\Http\Kernel` global HTTP middlware stack *(order or middlewares is important)*
+Now put these middlewares at the end of `App\Http\Kernel` global HTTP middlware stack *(order of middlewares is important)*
  
 ```php
 \Illuminate\Session\Middleware\StartSession::class,   
