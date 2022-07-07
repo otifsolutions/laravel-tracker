@@ -13,7 +13,7 @@ class LaravelTrackerServiceProvider extends ServiceProvider {
 
     public function booted(Closure $callback) {
         $schedule = $this->app->make(Schedule::class);
-        $schedule->command('clear:records')->daily()->at('08:00');
+        $schedule->command('clear:records')->monthly()->at('08:00');
     }
 
     public function boot(Kernel $kernel) {
