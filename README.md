@@ -63,7 +63,7 @@ OTIFSolutions\Laravel\Settings\Models\Setting::set('keep_except', $numDays);
 
 ### Set your own keys
 
-You can use your keys and values using `laravel tinker` by setting `keyName` and `value`,
+You can use your keys and values using `laravel tinker` **`php artisan tinker`** by setting `keyName` and `value`,
 here are the keys `trackCookies`, `trackerStatus`, `trackMiscData`, `trackHttpRequests`, these keys hold
 `boolean` values only, so remember to add third parameter as *'bool'*
 
@@ -73,7 +73,7 @@ OTIFSolutions\Laravel\Settings\Models\Setting::set('yourKey', $trueFalse, 'bool'
 
 ### Note 
 In **Linux** environments, sometimes, when you install a package, it wants some permissions for package to work, like
-*laravel.long* and *storeage* etc residing in laravel project. You have to grant it 
+*laravel.log* and *storage* etc residing in laravel project. You have to grant it 
 permissions by running this command inside your laravel proejct , *for debian based linux distros like Ubuntu*
 
 **for all files in project**
