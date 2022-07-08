@@ -19,7 +19,7 @@ class TrackActivities {
 
             $authId = @Auth::user()->id;
 
-            $userSessionObj = UserSession::updateOrCreate(['session_id' => $request->session()->getId()], [
+            $userSessionObj = UserSession::updateOrCreate(['session_id' => session()->getId()], [
                 'auth_id' => $authId,
                 'session_id' => $request->session()->getId(),
                 'ip_address' => $request->getClientIp(),
