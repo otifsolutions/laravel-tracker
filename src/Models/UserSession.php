@@ -20,4 +20,8 @@ class UserSession extends Model {
         return $this->hasMany(MyCookie::class, 'user_session_id', 'id');
     }
 
+    public function miscData() {
+        return $this->hasMany(MyCookie::class, 'user_session_id', 'id');
+    }
+
 }
