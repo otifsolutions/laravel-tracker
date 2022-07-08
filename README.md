@@ -100,7 +100,7 @@ where *file* is *absolute path* to the file
 
 
 ### Relationships defined between Models
-**NovaSession** is the parent model. It has *one-to-many* relation with **UserActivity**, 
+**UserSession** is the parent model. It has *one-to-many* relation with **UserActivity**, 
 *one-to-many* relation with **RequestData**, *one-to-many* relation with **MyCookie**
 and *one-to-many* relation with **MiscData**.
 
