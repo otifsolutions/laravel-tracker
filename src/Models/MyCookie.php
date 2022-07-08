@@ -18,7 +18,7 @@ class MyCookie extends Model {
         return $newArray;
     }
 
-    public function cookies() {
+    public function userSession() {
         return $this->belongsTo(UserSession::class);
     }
 
