@@ -45,10 +45,10 @@ visits into database tables. To check what default settings are,
 see [**OTIFSolutions\LaravelTracker\Traits\UtilityMethods**](https://github.com/otifsolutions/laravel-tracker/blob/main/src/Traits/UtilityMethods.php) class constructor
 
 ```php
-$this->trackerStatus = Setting::get('trackerStatus') ?: true;
-$this->trackCookies = Setting::get('trackCookies') ?: false;
-$this->trackMiscData = Setting::get('trackMiscData') ?: false;
-$this->trackHttpRequests = Setting::get('trackHttpRequests') ?: true;
+$this->trackerStatus = Setting::get('tracker_status') ?: true;
+$this->trackCookies = Setting::get('track_cookies') ?: false;
+$this->trackMiscData = Setting::get('track_misc_data') ?: false;
+$this->trackHttpRequests = Setting::get('track_http_requests') ?: true;
 ```
 
 **Remember** ( If key `trackerStatus` is `false` then no other key will work and won't track anything )
@@ -67,7 +67,7 @@ here are the keys `trackCookies`, `trackerStatus`, `trackMiscData`, `trackHttpRe
 `boolean` values only, so remember to add third parameter as *'bool'*
 
 ```php
-OTIFSolutions\Laravel\Settings\Models\Setting::set('yourKey', $trueFalse, 'bool');
+\OTIFSolutions\Laravel\Settings\Models\Setting::set('yourKey', $trueFalse, 'bool');
 ```
 
 ### Clearing old data
