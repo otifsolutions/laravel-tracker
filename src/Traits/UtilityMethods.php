@@ -13,11 +13,10 @@ trait UtilityMethods {
     private $trackMiscData;
 
     public function __construct() {
-
-        $this->trackerStatus = Setting::get('trackerStatus') ?: true;
-        $this->trackCookies = Setting::get('trackCookies') ?: false;
-        $this->trackMiscData = Setting::get('trackMiscData') ?: false;
-        $this->trackHttpRequests = Setting::get('trackHttpRequests') ?: true;
+        $this->trackerStatus = Setting::get('tracker_status') ?: true;
+        $this->trackCookies = Setting::get('track_cookies') ?: false;
+        $this->trackMiscData = Setting::get('track_misc_data') ?: false;
+        $this->trackHttpRequests = Setting::get('trach_http_requests') ?: true;
     }
 
     protected function getTrackerStatus(): bool {
