@@ -57,17 +57,17 @@ Package made database table hold records of certain days, and removes the rest o
 by default it is set to `20` days, you can either change this too by
 
 ```php
-OTIFSolutions\Laravel\Settings\Models\Setting::set('keep_except', $numDays);
+\OTIFSolutions\Laravel\Settings\Models\Setting::set('keep_except', $numDays);
 ```
 
 ### Set your own keys
 
 You can use your keys and values using `laravel tinker` **`(php artisan tinker)`** by setting `keyName` and `value`,
-here are the keys `trackCookies`, `trackerStatus`, `trackMiscData`, `trackHttpRequests`, these keys hold
+here are the keys `track_cookies`, `tracker_status`, `track_misc_data`, `track_http_requests`, these keys hold
 `boolean` values only, so remember to add third parameter as *'bool'*
 
 ```php
-\OTIFSolutions\Laravel\Settings\Models\Setting::set('yourKey', $trueFalse, 'bool');
+\OTIFSolutions\Laravel\Settings\Models\Setting::set('your_key', $trueFalse, 'bool');
 ```
 
 ### Clearing old data
