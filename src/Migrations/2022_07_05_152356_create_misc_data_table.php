@@ -8,7 +8,7 @@ return new class extends Migration {
 
     public function up() {
 
-        Schema::create('misc_data', static function (Blueprint $table) {
+        Schema::create('misc_data', function (Blueprint $table) {
             $table->engine = 'myIsam';  // for performance and fast data insertion
             $table->id();
 

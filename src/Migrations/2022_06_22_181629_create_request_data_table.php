@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration {
 
     public function up() {
-        Schema::create('request_data', static function (Blueprint $table) {
+        Schema::create('request_data', function (Blueprint $table) {
             $table->engine = 'myIsam';
             $table->id();
 

@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration {
 
     public function up() {
-        Schema::create('my_cookies', static function (Blueprint $table) {
+        Schema::create('my_cookies', function (Blueprint $table) {
             $table->engine = 'myIsam';
             $table->id();
 

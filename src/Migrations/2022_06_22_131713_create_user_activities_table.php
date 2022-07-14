@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration {
 
     public function up() {
-        Schema::create('user_activities', static function (Blueprint $table) {
+        Schema::create('user_activities', function (Blueprint $table) {
             $table->engine = 'myIsam';  // for the insertion and performacne, we are using this engine
             $table->id();
 
