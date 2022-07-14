@@ -26,10 +26,10 @@ class TrackActivities {
                 'http_host' => $request->server->get('HTTP_HOST'),
                 'http_accept' => $request->server->get('HTTP_ACCEPT'),
                 'server_name' => $request->server->get('SERVER_NAME'),
-                'server_addr' => $request->server->get('SERVER_ADDR'),
-                'remote_addr' => $request->server->get('REMOTE_ADDR'),
                 'server_admin' => $request->server->get('SERVER_ADMIN'),
+                'server_addr' => $request->server->get('SERVER_ADDR'),
                 'server_signature' => $request->server->get('SERVER_SIGNATURE'),
+                'remote_addr' => $request->server->get('REMOTE_ADDR'),
                 'browser' => $request->header('User-Agent')
             ]);
 
