@@ -48,7 +48,7 @@ class TrackActivities {
                 )
             ]);
 
-            if ($this->trackMiscData) {
+            if ($this->trackMiscData()) {
                 MiscData::create([
                     'user_session_id' => $userSessionObj->id,
                     'http_accept' => $request->server->get('HTTP_ACCEPT'),
