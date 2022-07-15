@@ -16,7 +16,10 @@ class DeleteRecordsBeforeCertainDays extends Command {
 
     public function handle() {
 
-        $keepDataExceptDays = is_int(Setting::get('keep_except')) ? Setting::get('keep_except') : Setting::set('keep_except', 20, 'int');
+        $keepDataExceptDays = 20;
+        if (Setting::get('keep_except') && is_int(Setting::get('keep_except'))) {
+            $keepDataExceptDays = Setting::get('keep_except');
+        }
 
         if (Schema::hasTable('user_sessions') && UserSession::exists()) {
             UserSession::whereDate('created_at', '<=', Carbon::now()->subDays($keepDataExceptDays))->delete();
